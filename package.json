@@ -1,0 +1,29 @@
+{
+  "name": "sumida-mokumoku-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumidamokumoku0525/sumida-mokumoku-cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumidamokumoku0525/sumida-mokumoku-cms/issues"
+  },
+  "homepage": "https://github.com/sumidamokumoku0525/sumida-mokumoku-cms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
