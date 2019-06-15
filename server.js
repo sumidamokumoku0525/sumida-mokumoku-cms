@@ -10,6 +10,12 @@ app
   .then(() => {
     const server = express();
 
+    server.get('/post/:url_slug', (req, res) => {
+      const actualPage = '/postitem'
+      const queryParams = {url_slug: req.params.url_slug}
+      app.render(req, res, actualPage, queryParams)
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });

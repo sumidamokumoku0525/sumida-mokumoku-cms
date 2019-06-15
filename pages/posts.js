@@ -1,16 +1,14 @@
+
 import React from 'react'
 import getPosts from '../src/getPosts'
 import Link from 'next/link'
 import PostLink from '../src/components/PostLink'
 
-const Index = props => {
+const Posts = props => {
   const { items } = props
-  console.log(items)
-  
+
   return (
     <div>
-      <div>Index</div>
-      <p>新着記事(最大3件)</p>
       <ul>
         {items.map(item => (
           <li key={item.sys.id}>
@@ -18,16 +16,15 @@ const Index = props => {
           </li>
         ))}
       </ul>
-      <Link href="/posts"><a>Post一覧</a></Link>
+      <Link href="/"><a>TOP</a></Link>
     </div>
   )
 }
 
-Index.getInitialProps = () => {
-  const length = 3
-  const res = getPosts(length)
+Posts.getInitialProps = () => {
+  const res = getPosts()
 
   return res
 }
 
-export default Index
+export default Posts
