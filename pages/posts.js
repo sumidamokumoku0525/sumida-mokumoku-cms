@@ -16,7 +16,7 @@ const Posts = props => {
           </li>
         ))}
       </ul>
-      <Link href="/"><a>TOP</a></Link>
+      <Link prefetch href="/"><a>TOP</a></Link>
     </div>
   )
 }

@@ -13,7 +13,7 @@ const PostItem = props => {
         <h2>{post.title}</h2>
         <p>{post.body}</p>
       </div>
-      <Link href="/posts"><a>Post一覧へ</a></Link>
+      <Link prefetch href="/posts"><a>Post一覧へ</a></Link>
     </div>
   )
 }

@@ -18,7 +18,7 @@ const Index = props => {
           </li>
         ))}
       </ul>
-      <Link href="/posts"><a>Post一覧</a></Link>
+      <Link prefetch href="/posts"><a>Post一覧</a></Link>
     </div>
   )
 }
