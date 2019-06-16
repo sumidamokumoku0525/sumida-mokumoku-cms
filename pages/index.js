@@ -6,7 +6,7 @@ import PostLink from '../src/components/PostLink'
 const Index = props => {
   const { items } = props
   console.log(items)
-  
+
   return (
     <div>
       <div>Index</div>
@@ -19,6 +19,8 @@ const Index = props => {
         ))}
       </ul>
       <Link prefetch href="/posts"><a>Post一覧</a></Link>
+      <br />
+      <Link href="/map"><a>map サンプル</a></Link>
     </div>
   )
 }
