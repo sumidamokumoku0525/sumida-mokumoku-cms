@@ -1,45 +1,10 @@
 import React, { Component } from 'react'
 import ReactMapGL from 'react-map-gl';
+import * as contentful from 'contentful'
+import { config } from '../config'
 
-const TEST_DATA = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          139.81407165527344,
-          35.698013436605756
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          139.80566024780273,
-          35.717806751895715
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          139.82196807861328,
-          35.71920046208453
-        ]
-      }
-    }
-  ]
-}
-
+// contentful のクライアント
+const client = contentful.createClient(config)
 
 class Map extends Component {
   constructor(props) {
@@ -50,16 +15,21 @@ class Map extends Component {
           height: '100vh',
           latitude: 35.710332,
           longitude: 139.8132971,
-          zoom: 13
+          zoom: 15
       }
     };
   }
 
-  componentDidMount() {
-    console.log(process.env.MAPBOX_ACCESS_TOKEN);
-    const map =  this.reactMap.getMap();
-    console.log(map);
-     map.on('load', () => {
+  async componentDidMount() {
+    const map =  await this.reactMap.getMap();
+    const entries = await client.getEntries({
+      order: '-sys.createdAt',
+      content_type: 'map',
+      limit: 1,
+    })
+    const data = await entries.items[0].fields.data;
+    await console.log(data);
+    await map.on('load', () => {
       //add the GeoJSON layer here
       map.addLayer({
         id: "locations",
@@ -67,7 +37,7 @@ class Map extends Component {
         // Add a GeoJSON source containing place coordinates and information.
         source: {
           type: "geojson",
-          data: TEST_DATA
+          data: JSON.parse(data)
         },
         layout: {
           // ここでアイコンの見た目を決めている模様
@@ -79,7 +49,7 @@ class Map extends Component {
   }
 
   componentWillUnmount() {
-    this.map.remove()
+    this.reactMap.remove()
   }
 
   render() {

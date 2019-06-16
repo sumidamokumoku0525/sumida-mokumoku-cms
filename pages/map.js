@@ -3,7 +3,9 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
 const DynamicMap = dynamic(() => import('./../src/components/Map'), {
-  loading: () => <p>Loading...</p>,
+  loading: () => {
+    return (<p>Loading...</p>)
+  },
   ssr: false
 });
 
