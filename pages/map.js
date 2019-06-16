@@ -1,13 +1,18 @@
 import React from 'react'
-import Map from '../src/components/Map'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const DynamicMap = dynamic(() => import('./../src/components/Map'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false
+});
 
 const SampleMap = props => {
 
   return (
     <div>
       <Link href="/"><a>Index へ</a></Link>
-      <Map />
+      <DynamicMap />
     </div>
   )
 }
