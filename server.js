@@ -16,6 +16,10 @@ app
       app.render(req, res, actualPage, queryParams)
     })
 
+    server.get('/map', (req, res) => {
+      app.render(req, res, '/map')
+    })
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });
