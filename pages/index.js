@@ -27,7 +27,7 @@ const Index = props => {
 
 Index.getInitialProps = () => {
   const length = 3
-  const res = getPosts(length)
+  const res = getPosts('post', length)
 
   return res
 }
