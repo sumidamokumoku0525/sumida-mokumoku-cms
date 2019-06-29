@@ -2,14 +2,14 @@ import React from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import * as contentful from 'contentful'
-import { config } from '../src/config'
-import getPosts from '../src/getPosts'
-import CONTENFUL_MODEL from '../src/constants/model'
+import { config } from '../../src/config'
+import getPosts from '../../src/getPosts'
+import CONTENFUL_MODEL from '../../src/constants/model'
 
 // contentful のクライアント
 const client = contentful.createClient(config)
 
-const DynamicMap = dynamic(() => import('./../src/components/pointMap'), {
+const DynamicMap = dynamic(() => import('../../src/components/createGeojsonMap'), {
   loading: () => {
     return (<p>Loading...</p>)
   },
@@ -21,8 +21,6 @@ const SampleMap = props => {
   return (
     <div>
       <Link href="/"><a>Index へ</a></Link>
-      <br />
-      <Link href="/map/create"><a>Create へ</a></Link>
       <DynamicMap data={data} />
     </div>
   )
