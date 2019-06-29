@@ -1,6 +1,7 @@
 import React from 'react'
 import getPosts from '../src/getPosts'
 import IndexTemplate from '../src/components/templates'
+import CONTENFUL_MODEL from '../src/constants/model'
 
 const Index = props => {
   const { items } = props
@@ -12,7 +13,7 @@ const Index = props => {
 
 Index.getInitialProps = () => {
   const length = 3
-  const res = getPosts('post', length)
+  const res = getPosts(CONTENFUL_MODEL.POST, length)
 
   return res
 }

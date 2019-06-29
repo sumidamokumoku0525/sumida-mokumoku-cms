@@ -3,6 +3,7 @@ import React from 'react'
 import getPosts from '../src/getPosts'
 import Link from 'next/link'
 import PostLink from '../src/components/PostLink'
+import CONTENFUL_MODEL from '../src/constants/model'
 
 const Posts = props => {
   const { items } = props
@@ -22,7 +23,7 @@ const Posts = props => {
 }
 
 Posts.getInitialProps = () => {
-  const res = getPosts('post')
+  const res = getPosts(CONTENFUL_MODEL.POST)
 
   return res
 }

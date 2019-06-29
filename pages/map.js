@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import * as contentful from 'contentful'
 import { config } from '../src/config'
 import getPosts from '../src/getPosts'
+import CONTENFUL_MODEL from '../src/constants/model'
 
 // contentful のクライアント
 const client = contentful.createClient(config)
@@ -26,7 +27,7 @@ const SampleMap = props => {
 }
 
 SampleMap.getInitialProps = () => {
-  const res = getPosts('map');
+  const res = getPosts(CONTENFUL_MODEL.MAP);
   return res;
 }
 
