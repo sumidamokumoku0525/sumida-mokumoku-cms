@@ -22,7 +22,7 @@ const Posts = props => {
 }
 
 Posts.getInitialProps = () => {
-  const res = getPosts()
+  const res = getPosts('post')
 
   return res
 }
