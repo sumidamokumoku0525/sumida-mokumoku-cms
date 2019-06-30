@@ -1,35 +1,59 @@
-import Map from './Map';
+import React, { Component } from 'react'
+import ReactMapGL, {Marker} from 'react-map-gl'
+import MAP_ATTRIBUTE from '../constants/map'
 
-class createGeojsonMap extends Map {
+class CreateGeojsonMap extends Component {
   constructor(props) {
     super(props);
+     this.state = {
+      viewport: MAP_ATTRIBUTE.viewport,
+      points: [],
+    };
   }
 
-  _onClick(event) {
-    const point = [event.center.x, event.center.y];
-    console.log(event.lngLat)
+  onClick = (event) => {
+    const { lng, lat } = event.lngLat
+    var { points } = this.state;
+    points = [...points, event.lngLat];
+    this.setState({
+      points: points
+    });
   }
 
-  async componentDidMount() {
-    const map =  await this.reactMap.getMap();
-    await map.on('load', () => {
-      //add the GeoJSON layer here
-      map.addLayer({
-        id: "locations",
-        type: "symbol",
-        // Add a GeoJSON source containing place coordinates and information.
-        source: {
-          type: "geojson",
-          data: JSON.parse(this.props.data)
-        },
-        layout: {
-          // ここでアイコンの見た目を決めている模様
-          "icon-image": "star-15",
-          "icon-allow-overlap": true
-        }
-      })
-    })
+  render() {
+    return (
+      <div>
+        <form id="points">
+          {this.state.points.map( (point, i) => {
+            return <input type="hidden" value={point} />
+          })}
+          <input type="submit" value="送信" />
+        </form>
+        <ul id="plotPoints">
+          {this.state.points.map( (point, i) => {
+            return <li>{`軽度: ${point[0]} 緯度: ${point[1]}`}</li>
+          })}
+        </ul>
+        <ReactMapGL
+          ref={(reactMap) => this.reactMap = reactMap}
+          mapStyle="mapbox://styles/mapbox/streets-v9"
+          mapboxApiAccessToken={process.env.MAPBOX_ACCESS_TOKEN}
+          onViewportChange={(viewport) => this.setState({viewport})}
+          onClick={this.onClick}
+          {...this.state.viewport}
+        >
+          {this.state.points.map((point, i) => {
+            console.log(point)
+            return (
+              <Marker latitude={point[1]} longitude={point[0]} offsetLeft={-20} offsetTop={-10}>
+                <p>Point</p>
+              </Marker>
+            )
+          })}
+        </ReactMapGL>
+      </div>
+    );
   }
 }
 
-export default createGeojsonMap;
+export default CreateGeojsonMap;

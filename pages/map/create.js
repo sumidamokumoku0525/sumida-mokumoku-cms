@@ -9,26 +9,20 @@ import CONTENFUL_MODEL from '../../src/constants/model'
 // contentful のクライアント
 const client = contentful.createClient(config)
 
-const DynamicMap = dynamic(() => import('../../src/components/createGeojsonMap'), {
+const DynamicMap = dynamic(() => import('../../src/components/CreateGeojsonMap'), {
   loading: () => {
     return (<p>Loading...</p>)
   },
   ssr: false
 });
 
-const SampleMap = props => {
-  const { data } = props.items[0].fields;
+const create = props => {
   return (
     <div>
       <Link href="/"><a>Index へ</a></Link>
-      <DynamicMap data={data} />
+      <DynamicMap />
     </div>
   )
 }
 
-SampleMap.getInitialProps = () => {
-  const res = getPosts(CONTENFUL_MODEL.MAP);
-  return res;
-}
-
-export default SampleMap
+export default create
