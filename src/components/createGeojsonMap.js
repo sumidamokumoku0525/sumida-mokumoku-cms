@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactMapGL, {Marker} from 'react-map-gl'
+import ReactMapGL, { Marker } from 'react-map-gl'
 import MAP_ATTRIBUTE from '../constants/map'
 
 class CreateGeojsonMap extends Component {
@@ -12,7 +12,6 @@ class CreateGeojsonMap extends Component {
   }
 
   onClick = (event) => {
-    const { lng, lat } = event.lngLat
     var { points } = this.state;
     points = [...points, event.lngLat];
     this.setState({
@@ -31,7 +30,7 @@ class CreateGeojsonMap extends Component {
         </form>
         <ul id="plotPoints">
           {this.state.points.map( (point, i) => {
-            return <li>{`軽度: ${point[0]} 緯度: ${point[1]}`}</li>
+            return <li>{`経度: ${point[0]} 緯度: ${point[1]}`}</li>
           })}
         </ul>
         <ReactMapGL
@@ -46,7 +45,7 @@ class CreateGeojsonMap extends Component {
             console.log(point)
             return (
               <Marker latitude={point[1]} longitude={point[0]} offsetLeft={-20} offsetTop={-10}>
-                <p>Point</p>
+                <img src="/static/marker.svg" width="30" height="30" />
               </Marker>
             )
           })}
