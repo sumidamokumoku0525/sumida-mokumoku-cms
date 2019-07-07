@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
-const DynamicMap = dynamic(() => import('../../src/components/CreateGeojsonMap'), {
+const DynamicMap = dynamic(() => import('../../src/components/createGeojsonMap'), {
   loading: () => {
     return (<p>Loading...</p>)
   },

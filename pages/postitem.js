@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import * as contentful from 'contentful'
-import config from './ctfConfig'
+import config from '../src/ctfConfig'
 
 const PostItem = props => {
   const post = props.item.fields
