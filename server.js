@@ -24,6 +24,11 @@ app
       return handle(req, res);
     });
 
+    server.post('/map/create', function(req, res) {
+      console.log(req);
+      res.send('POST is sended.');
+    });
+
     server.listen(3000, err => {
       if (err) throw err;
       console.log('> Ready on http://localhost:3000');
