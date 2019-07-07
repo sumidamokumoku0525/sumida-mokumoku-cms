@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/sumidamokumoku0525/sumida-mokumoku-cms#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "contentful": "^7.7.0",
+    "contentful-management": "^5.9.0",
     "dotenv-webpack": "^1.7.0",
     "express": "^4.17.1",
     "isomorphic-unfetch": "^3.0.0",

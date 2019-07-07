@@ -2,12 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import * as contentful from 'contentful'
-import { config } from '../src/config'
+import config from '../src/ctfConfig'
 import getPosts from '../src/getPosts'
 import CONTENFUL_MODEL from '../src/constants/model'
 
 // contentful のクライアント
-const client = contentful.createClient(config)
+const client = contentful.createClient(config.deliver)
 
 const DynamicMap = dynamic(() => import('./../src/components/pointMap'), {
   loading: () => {

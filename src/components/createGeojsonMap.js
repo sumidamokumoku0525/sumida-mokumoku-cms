@@ -25,7 +25,7 @@ class CreateGeojsonMap extends Component {
       <div>
         <form id="points" method="POST" action="/map/create">
           {this.state.points.map( (point, i) => {
-            return <input type="hidden" value={point} />
+            return <input type="hidden" value={point} name="point" />
           })}
           <input type="submit" value="送信" />
         </form>

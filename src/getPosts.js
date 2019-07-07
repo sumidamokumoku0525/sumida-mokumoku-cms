@@ -1,7 +1,7 @@
 import * as contentful from 'contentful'
-import { config } from '../src/config'
+import config from './ctfConfig'
 
-const client = contentful.createClient(config)
+const client = contentful.createClient(config.deliver)
 
 const getPosts = async (model, lim = 100) => {
   const entries = await client.getEntries({

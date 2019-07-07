@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import * as contentful from 'contentful'
-import { config } from '../src/config'
+import config from './ctfConfig'
 
 const PostItem = props => {
   const post = props.item.fields
@@ -18,7 +18,7 @@ const PostItem = props => {
   )
 }
 
-const client = contentful.createClient(config)
+const client = contentful.createClient(config.deliver)
 
 PostItem.getInitialProps = async (context) => {
   const { url_slug } = context.query
