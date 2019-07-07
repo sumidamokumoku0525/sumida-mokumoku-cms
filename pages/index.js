@@ -1,6 +1,6 @@
 import React from 'react'
 import getPosts from '../src/getPosts'
-import IndexTemplate from '../src/components/templates/Index'
+import IndexTemplate from '../src/components/templates'
 
 const Index = props => {
   const { items } = props
