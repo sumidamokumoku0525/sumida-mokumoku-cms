@@ -1,5 +1,5 @@
 import React from 'react'
-import getPosts from '../src/getPosts'
+import getEvents from '../src/getEvents'
 import IndexTemplate from '../src/components/templates'
 
 const Index = props => {
@@ -12,7 +12,7 @@ const Index = props => {
 
 Index.getInitialProps = () => {
   const length = 3
-  const res = getPosts(length)
+  const res = getEvents(length)
 
   return res
 }
