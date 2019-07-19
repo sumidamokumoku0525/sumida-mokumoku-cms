@@ -12,7 +12,11 @@ const Index = props => {
 
 Index.getInitialProps = () => {
   const length = 3
+<<<<<<< HEAD
   const res = getEvents(length)
+=======
+  const res = getPosts('post', length)
+>>>>>>> bcdbab00540ea4ed94b796fee14598e91dc345e6
 
   return res
 }

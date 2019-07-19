@@ -19,4 +19,14 @@ const PostList = props => {
   )
 }
 
+<<<<<<< HEAD:src/components/organisms/PostList.js
 export default PostList
+=======
+Posts.getInitialProps = () => {
+  const res = getPosts('post')
+
+  return res
+}
+
+export default Posts
+>>>>>>> bcdbab00540ea4ed94b796fee14598e91dc345e6:pages/posts.js
