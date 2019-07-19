@@ -1,10 +1,8 @@
-
 import React from 'react'
-import getPosts from '../src/getPosts'
 import Link from 'next/link'
-import PostLink from '../src/components/PostLink'
+import PostItem from './PostItem'
 
-const Posts = props => {
+const PostList = props => {
   const { items } = props
 
   return (
@@ -12,7 +10,7 @@ const Posts = props => {
       <ul>
         {items.map(item => (
           <li key={item.sys.id}>
-            <PostLink fields={item.fields} />
+            <PostItem item={item} />
           </li>
         ))}
       </ul>
@@ -21,10 +19,4 @@ const Posts = props => {
   )
 }
 
-Posts.getInitialProps = () => {
-  const res = getPosts()
-
-  return res
-}
-
-export default Posts
+export default PostList
