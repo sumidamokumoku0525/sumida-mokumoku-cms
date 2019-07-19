@@ -15,7 +15,7 @@ const TopEvents = props => {
         ))}
       </Inner>
       <BtnWrap>
-        <Btn href="https://sumida-mokumoku.connpass.com/">その他のイベントはこちら</Btn>
+        <Btn href="https://sumida-mokumoku.connpass.com/" target="_blank">その他のイベントはこちら</Btn>
       </BtnWrap>
     </Wrapper>
   )

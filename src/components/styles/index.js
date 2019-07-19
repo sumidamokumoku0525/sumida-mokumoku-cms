@@ -5,7 +5,7 @@ export const colors = {
   main_light: "#83e0bf",
   accent: "#edf179",
   white: "#fff",
-  black: "#093945",
+  black: "#333",
 }
 
 export const vars = {

@@ -35,7 +35,7 @@ const Wrapper = styled.header`
   width: 100%;
   z-index: 9999;
   ${mixins.transition({prop: 'background-color'})}
-  background-color: ${props => props.fixed ? 'rgba(27, 185, 129, 0.6)' : 'transparent'};
+  background-color: ${props => props.fixed ? 'rgba(0, 0, 0, 0.6)' : 'transparent'};
 `
 const Inner = styled.div`
   ${mixins.inner}

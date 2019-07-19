@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import Link from 'next/link'
 import Date from '../atoms/Date'
 
-const EventItem = props => {
-  const { title, date, image, link } = props.fields
-  const imgsrc = image.fields.file.url
+const PostItem = ({item, ...props}) => {
+  const { title, body, image, url_slug } = item.fields
+  const { createdAt, updatedAt, id } = item.sys
+  const imgsrc = image ? image.fields.file.url : '/static/assets/noimage.jpg'
   
   return (
     <Wrapper {...props}>
-      <Link href={link} passHref>
-        <Inner target="_blank" rel="noopener">
+      <Link prefetch as={`/blog/${url_slug}`} href={`/blogzoom?id=${id}`} passHref>
+        <Inner>
           <ImgBox>
             <Img src={imgsrc} />
           </ImgBox>
@@ -18,7 +19,7 @@ const EventItem = props => {
             <Ttl>
               <Mark>{title}</Mark>
             </Ttl>
-            <StyledDate event_date={date} />
+            <StyledDate event_date={createdAt} />
           </InfoBox>
         </Inner>
       </Link>
@@ -26,7 +27,7 @@ const EventItem = props => {
   )
 }
 
-export default EventItem
+export default PostItem
 
 const Wrapper = styled.li`
 `
@@ -55,7 +56,6 @@ const Img = styled.img`
     transform: scale(1.1);
     opacity: .7;
   }
-
 `
 const InfoBox = styled.div`
   padding: 15px;

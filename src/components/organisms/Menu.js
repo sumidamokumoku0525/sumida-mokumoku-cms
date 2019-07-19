@@ -40,12 +40,12 @@ const menuItems = [
   },
   {
     name: 'Blog',
-    path: '/posts'
+    path: '/blog'
   },
-  {
-    name: 'Maps',
-    path: '/map'
-  },
+  // {
+  //   name: 'Maps',
+  //   path: '/map'
+  // },
   {
     name: 'Contact',
     path: '/contact'
