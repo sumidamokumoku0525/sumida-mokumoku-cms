@@ -1,16 +1,16 @@
 import * as contentful from 'contentful'
-import { config } from '../src/config'
+import { config } from './config'
 
 const client = contentful.createClient(config)
 
-const getPosts = async (lim = 100) => {
+const getEvents = async (lim = 100) => {
   const entries = await client.getEntries({
     order: '-sys.createdAt',
-    content_type: 'post',
+    content_type: 'event',
     limit: lim,
   })
 
   return entries
 }
 
-export default getPosts
+export default getEvents
